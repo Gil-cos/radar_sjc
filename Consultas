@@ -1,0 +1,7 @@
+insert into RADAR_DIA (date, local) values (0, 'Av. Com. Vicente de Paulo Penido (60 km/h) Jd. Aquarius');
+insert into RADAR_DIA (date, local) values (1, 'Av. Dr. Ademar de Barros (50 km/h) V. Adyana');
+insert into RADAR_DIA (date, local) values (2, 'R. Antonio Aleixo da Silva (50 km/h) Jd. Satélite');
+insert into RADAR_DIA (date, local) values (3, 'Av. Pres. Tancredo Neves (60 km/h) Jd. San Rafael');
+insert into RADAR_DIA (date, local) values (4, 'R. D. Genésia B. Tarantino (60 km/h) V. Piratininga');
+insert into RADAR_DIA (date, local) values (5, 'R. José Cobra (50 km/h) Pq. Industrial');
+insert into RADAR_DIA (date, local) values (6, 'R. Carvalho de Araujo (50 km/h) V. Maria');
