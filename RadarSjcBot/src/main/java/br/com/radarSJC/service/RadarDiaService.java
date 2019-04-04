@@ -1,4 +1,4 @@
-package br.com.radarSJC.utils;
+package br.com.radarSJC.service;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import br.com.radarSJC.model.Dia;
 import br.com.radarSJC.model.RadarDia;
 
-public class Connection {
+public class RadarDiaService {
 
 	public RadarDia[] getAll() {
 
@@ -36,8 +36,6 @@ public class Connection {
 				String json = EntityUtils.toString(entity);
 
 				radares = gson.fromJson(json, RadarDia[].class);
-				System.out.println("entrou aqui");
-
 			}
 			return radares;
 
@@ -58,7 +56,7 @@ public class Connection {
 		RadarDia radar = null;
 
 		HttpClient httpClient = HttpClients.createDefault();
-		HttpGet httpGet = new HttpGet("http://localhost:8080/lista");
+		HttpGet httpGet = new HttpGet("http://localhost:8080/lista/" + dia.toUpperCase());
 		httpGet.addHeader("accept", "application/json");
 
 		try {
@@ -69,13 +67,8 @@ public class Connection {
 
 				String json = EntityUtils.toString(entity);
 
-				RadarDia[] radares = gson.fromJson(json, RadarDia[].class);
+				radar = gson.fromJson(json, RadarDia.class);
 
-				for (RadarDia radarDia : radares) {
-					if (radarDia.getDate().toString().toLowerCase().equals(dia.toString().toLowerCase())) {
-						radar = new RadarDia(radarDia.getDate(), radarDia.getLocal());
-					}
-				}
 				return radar;
 			}
 		} catch (ClientProtocolException e) {

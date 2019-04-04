@@ -68,15 +68,16 @@ public class View implements Observer {
 				} else if (update.message().text().equals("/semana")) {
 					setControllerSearch(new ControllerSearchRadarDia(model, this));
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(), model.getRadaresRest(update)));
-					this.searchBehaviour = true;
+					this.searchBehaviour = false;
+					sendResponse = bot.execute(new SendMessage(update.message().chat().id(), "Digite /semana ou /dia:"));
 
 				} else if (update.message().text().equals("/dia")) {
 					setControllerSearch(new ControllerSearchRadarDia(model, this));
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(), "Qual dia da semana?"));
 					this.searchBehaviour = true;
-
+					
 				} else {
-					sendResponse = bot.execute(new SendMessage(update.message().chat().id(), "Digite semana ou dia:"));
+					sendResponse = bot.execute(new SendMessage(update.message().chat().id(), "Digite /semana ou /dia:"));
 				}
 
 			}

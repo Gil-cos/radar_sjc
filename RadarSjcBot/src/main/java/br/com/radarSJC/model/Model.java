@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.pengrad.telegrambot.model.Update;
 
-import br.com.radarSJC.utils.Connection;
+import br.com.radarSJC.service.RadarDiaService;
 import br.com.radarSJC.utils.Observer;
 import br.com.radarSJC.utils.Subject;
 
@@ -14,8 +14,8 @@ public class Model implements Subject {
 	private List<Observer> observers = new LinkedList<Observer>();
 
 	private List<RadarDia> radares = new LinkedList<RadarDia>();
-	
-	private Connection connection = new Connection();
+
+	private RadarDiaService service = new RadarDiaService();
 
 	private static Model uniqueInstance;
 
@@ -43,6 +43,35 @@ public class Model implements Subject {
 		this.radares.add(radar);
 	}
 
+	public String getRadaresRest(Update update) {
+		String radarData = "";
+		RadarDia[] radaresRest = service.getAll();
+
+		for (RadarDia radar : radaresRest) {
+			if ("/semana".equals(update.message().text().toLowerCase()))
+				radarData += "\n" + radar.getDate() + "\n" + radar.getLocal() + "\n";
+		}
+		return radarData;
+	}
+
+	public void searchRadar(Update update) {
+		String radarData = null;
+
+		RadarDia radarRest = service.get(update.message().text());
+
+		if (radarRest == null) {
+
+			this.notifyObservers(update.message().chat().id(), "Dia invalido");
+			this.notifyObservers(update.message().chat().id(), "Digite /semana ou /dia:");
+
+		} else {
+
+			radarData = radarRest.getDate() + "\n" + radarRest.getLocal();
+			this.notifyObservers(update.message().chat().id(), radarData);
+			this.notifyObservers(update.message().chat().id(), "Digite /semana ou /dia:");
+		}
+	}
+
 	public String getRadares(Update update) {
 		String radarData = "";
 		for (RadarDia radar : radares) {
@@ -56,51 +85,4 @@ public class Model implements Subject {
 			return "Dia invalido";
 		}
 	}
-
-	public String getRadaresRest(Update update) {
-		String radarData = "";
-		RadarDia[] radaresRest = connection.getAll();
-		
-		for (RadarDia radar : radaresRest) {
-			if ("/semana".equals(update.message().text().toLowerCase()))
-				radarData += "\n" + radar.getDate() + "\n" + radar.getLocal() + "\n";
-		}
-
-		if (radarData != "") {
-			return radarData;
-		} else {
-			return "Dia invalido";
-		}
-	}
-	
-	public void searchRadar(Update update) {
-		String radarData = null;
-		
-		RadarDia radareRest = connection.get(update.message().text());
-		
-		radarData = radareRest.getDate() + "\n" + radareRest.getLocal();
-
-		if (radarData != null) {
-			this.notifyObservers(update.message().chat().id(), radarData);
-		} else {
-			this.notifyObservers(update.message().chat().id(), "Dia invalido");
-		}
-
-	}
-	
-//	public void searchRadar(Update update) {
-//		String radarData = null;
-//		for (RadarDia radar : radares) {
-//			if (radar.getDate().toString().toLowerCase().equals(update.message().text()))
-//				radarData = radar.getDate() + "\n" + radar.getLocal();
-//		}
-//
-//		if (radarData != null) {
-//			this.notifyObservers(update.message().chat().id(), radarData);
-//		} else {
-//			this.notifyObservers(update.message().chat().id(), "Dia invalido");
-//		}
-//
-//	}
-
 }
