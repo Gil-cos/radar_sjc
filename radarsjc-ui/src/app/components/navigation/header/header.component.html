@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <a routerLink="/home">Radar SJC</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <a routerLink="/week">
+          <mat-icon class="icons">date_range</mat-icon><span>Radares da Semana</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/day">
+          <mat-icon>today</mat-icon> <span>Radares do Dia</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

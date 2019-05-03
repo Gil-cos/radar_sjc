@@ -1,0 +1,26 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title fxLayoutAlign="center center">Selecione o dia da semana</mat-card-title>
+    <mat-card-content>
+
+      <mat-form-field fxLayoutAlign="center center">
+        <mat-label>Dia da semana</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option *ngFor="let day of week" [value]="day.value">
+            {{day.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions align="center">
+      <button mat-raised-button color="primary" (click)="search()">Buscar</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+</section>
+
+<app-radar-day-info [day]='day' *ngIf="day"></app-radar-day-info>
