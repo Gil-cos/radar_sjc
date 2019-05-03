@@ -5,19 +5,19 @@
     </button>
   </div>
   <div>
-    <a routerLink="/home">Radar SJC</a>
+    <a routerLink="/home">RadarSJC</a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
       <li>
-        <a routerLink="/week">
-          <mat-icon class="icons">date_range</mat-icon><span>Radares da Semana</span>
-        </a>
-      </li>
-      <li>
         <a routerLink="/day">
           <mat-icon>today</mat-icon> <span>Radares do Dia</span>
         </a>
+      </li>
+      <a routerLink="/week">
+        <mat-icon class="icons">date_range</mat-icon><span>Radares da Semana</span>
+      </a>
+      <li>
       </li>
     </ul>
   </div>
