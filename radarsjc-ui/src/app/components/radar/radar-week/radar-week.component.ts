@@ -24,7 +24,7 @@ export class RadarWeekComponent implements OnInit {
   getAll() {
     this.radarService.getWeek()
       .subscribe(res => {
-        this.dataSource.data = res as RadarDia[];
+        this.dataSource.data = res;
       },
         err => {
           console.log(err);
