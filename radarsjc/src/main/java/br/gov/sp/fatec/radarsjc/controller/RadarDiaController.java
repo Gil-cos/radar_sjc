@@ -11,10 +11,6 @@ import br.gov.sp.fatec.radarsjc.model.Dia;
 import br.gov.sp.fatec.radarsjc.model.RadarDia;
 import br.gov.sp.fatec.radarsjc.service.RadarDiaService;
 
-/**
- * @author Alexandre Murata on 25/02/19.
- * @project radarsjc
- */
 @RestController
 @RequestMapping("/")
 public class RadarDiaController {
@@ -27,7 +23,7 @@ public class RadarDiaController {
 		return service.findAll();
 	}
 	
-	@RequestMapping(value="lista/{date}")
+	@RequestMapping(value="{date}")
 	public RadarDia getRadarDia(@PathVariable Dia date) {
 		return service.findByDay(date);
 	}
