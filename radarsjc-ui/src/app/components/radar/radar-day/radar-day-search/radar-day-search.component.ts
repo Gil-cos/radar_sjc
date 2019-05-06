@@ -35,8 +35,10 @@ export class RadarDaySearchComponent implements OnInit {
   }
 
   search() {
-    this.radarService.getDay(this.selected)
-      .subscribe(day => this.day = day)
+    if (this.selected) {
+      this.radarService.getDay(this.selected)
+        .subscribe(day => this.day = day)
+    }
   }
 
 }
