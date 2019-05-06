@@ -17,6 +17,10 @@ public class RadarDiaService {
 
 	@Autowired
 	private RadarDiaRepository repository;
+	
+	public RadarDia save(RadarDia radar){
+		return repository.save(radar);
+	}
 
 	public List<RadarDia> findAll() {
 		return repository.findAll();

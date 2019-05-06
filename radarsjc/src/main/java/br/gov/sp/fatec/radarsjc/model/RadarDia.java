@@ -49,7 +49,5 @@ public class RadarDia {
 
 	public void setLocal(String local) {
 		this.local = local;
-	}
-	
-	
+	}	
 }
