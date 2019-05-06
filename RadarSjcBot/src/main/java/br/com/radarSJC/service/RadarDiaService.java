@@ -13,7 +13,6 @@ import org.apache.http.util.EntityUtils;
 
 import com.google.gson.Gson;
 
-import br.com.radarSJC.model.Dia;
 import br.com.radarSJC.model.RadarDia;
 
 public class RadarDiaService {
@@ -24,7 +23,7 @@ public class RadarDiaService {
 		RadarDia[] radares = null;
 
 		HttpClient httpClient = HttpClients.createDefault();
-		HttpGet httpGet = new HttpGet("http://localhost:8080/lista");
+		HttpGet httpGet = new HttpGet("https://radarsjc.herokuapp.com/lista");
 		httpGet.addHeader("accept", "application/json");
 
 		try {
@@ -56,7 +55,7 @@ public class RadarDiaService {
 		RadarDia radar = null;
 
 		HttpClient httpClient = HttpClients.createDefault();
-		HttpGet httpGet = new HttpGet("http://localhost:8080/lista/" + dia.toUpperCase());
+		HttpGet httpGet = new HttpGet("https://radarsjc.herokuapp.com/" + dia.toUpperCase());
 		httpGet.addHeader("accept", "application/json");
 
 		try {
