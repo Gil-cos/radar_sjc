@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RadarDia } from 'src/app/model/RadarDia';
 import { MatTableDataSource } from '@angular/material';
-import { RadarService } from 'src/app/service/radar/radar.service';
+import { ActivatedRoute } from '@angular/router';
+import { RadarDia } from 'src/app/model/RadarDia';
 
 @Component({
   selector: 'app-radar-week',
@@ -14,7 +14,7 @@ export class RadarWeekComponent implements OnInit {
   public dataSource = new MatTableDataSource<RadarDia>();
 
   constructor(
-    private radarService: RadarService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -22,13 +22,7 @@ export class RadarWeekComponent implements OnInit {
   }
 
   getAll() {
-    this.radarService.getWeek()
-      .subscribe(res => {
-        this.dataSource.data = res;
-      },
-        err => {
-          console.log(err);
-        })
+    this.dataSource = this.route.snapshot.data['radarList'];
   }
 
 }

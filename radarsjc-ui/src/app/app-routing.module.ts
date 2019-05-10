@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { RadarWeekComponent } from './components/radar/radar-week/radar-week.component';
 import { RadarDayComponent } from './components/radar/radar-day/radar-day.component';
+import { RadarListResolver } from './service/radar/radar-list.resolver';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'week',
-    component: RadarWeekComponent
+    component: RadarWeekComponent,
+    resolve: { radarList: RadarListResolver }
   },
   {
     path: 'day',
