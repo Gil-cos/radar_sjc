@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RadarService } from 'src/app/service/radar/radar.service';
+import { RadarDia } from 'src/app/model/RadarDia';
 
 @Component({
   selector: 'app-radar-day',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RadarDayComponent implements OnInit {
 
-  constructor() { }
+  public day: RadarDia;
+
+  constructor(
+    private radarService: RadarService
+  ) { }
 
   ngOnInit() {
+  }
+
+  getDay(selected: string) {
+    if (selected) {
+      this.radarService.getDay(selected)
+        .subscribe(day => this.day = day)
+    }
   }
 
 }

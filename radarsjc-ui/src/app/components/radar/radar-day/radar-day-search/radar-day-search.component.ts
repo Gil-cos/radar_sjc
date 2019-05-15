@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { RadarDia } from 'src/app/model/RadarDia';
-import { RadarService } from 'src/app/service/radar/radar.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 export interface Day {
   value: string;
@@ -24,21 +22,17 @@ export class RadarDaySearchComponent implements OnInit {
     { value: 'DOMINGO', viewValue: 'Domingo' }
   ];
 
+  @Output() selectedOption = new EventEmitter<String>()
   selected = '';
-  public day: RadarDia;
-
-  constructor(
-    private radarService: RadarService
-  ) { }
+  
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   search() {
-    if (this.selected) {
-      this.radarService.getDay(this.selected)
-        .subscribe(day => this.day = day)
-    }
+    this.selectedOption.emit(this.selected);
   }
 
 }
