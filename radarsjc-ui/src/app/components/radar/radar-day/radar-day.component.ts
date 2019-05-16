@@ -10,6 +10,7 @@ import { RadarDia } from 'src/app/model/RadarDia';
 export class RadarDayComponent implements OnInit {
 
   public day: RadarDia;
+  locals: string[];
 
   constructor(
     private radarService: RadarService
@@ -21,8 +22,14 @@ export class RadarDayComponent implements OnInit {
   getDay(selected: string) {
     if (selected) {
       this.radarService.getDay(selected)
-        .subscribe(day => this.day = day)
+        .subscribe(day => {
+          this.day = day;
+          this.formatLocal(this.day);
+        })
     }
   }
 
+  formatLocal(day: RadarDia) {
+    this.locals = day.local.split('-');
+  }
 }

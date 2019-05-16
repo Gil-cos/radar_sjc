@@ -48,13 +48,32 @@ public class JsoupService {
 				"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_domingo");
 		spans.add(spanDomingo.text());
 
+		spans = formatLocal(spans);
+
 		for (String span : spans) {
 			radares.add(new RadarDia(id, Dia.getDia(i), span));
 			i++;
 			id++;
 		}
-
+		
 		return radares;
+	}
+
+	private List<String> formatLocal(List<String> spans) {
+
+		String[] ruas = { "R.", "Av", "E. " };
+		String[] ruasPrefix = { "-R.", "-Av", "-E." };
+		List<String> novoSpans = new ArrayList<String>();
+		String nova = null;
+
+		for (String span : spans) {
+			nova = span.replaceAll(ruas[0], ruasPrefix[0]);
+			nova = nova.replaceAll(ruas[1], ruasPrefix[1]);
+			nova = nova.replaceAll(ruas[2], ruasPrefix[2]);
+			novoSpans.add(nova);
+		}
+
+		return novoSpans;
 	}
 
 }

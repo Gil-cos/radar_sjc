@@ -8,7 +8,7 @@ import { RadarDia } from 'src/app/model/RadarDia';
 })
 export class RadarDayInfoComponent implements OnInit {
 
-  @Input() public day: RadarDia;
+  @Input() locals: string[];
 
   constructor() { }
 
