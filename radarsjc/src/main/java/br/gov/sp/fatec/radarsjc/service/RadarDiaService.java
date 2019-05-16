@@ -18,7 +18,7 @@ public class RadarDiaService {
 	@Autowired
 	private RadarDiaRepository repository;
 	
-	public RadarDia save(RadarDia radar){
+	public RadarDia createOrUpdate(RadarDia radar){
 		return repository.save(radar);
 	}
 

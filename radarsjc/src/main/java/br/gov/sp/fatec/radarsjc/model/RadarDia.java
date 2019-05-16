@@ -12,10 +12,19 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name="radar_dia")
+@Table(name = "radar_dia")
 @NoArgsConstructor
 @AllArgsConstructor
 public class RadarDia {
+
+	public RadarDia(Long id, Dia date, String local) {
+		this.id = id;
+		this.date = date;
+		this.local = local;
+	}
+	
+	public RadarDia() {
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,5 +58,5 @@ public class RadarDia {
 
 	public void setLocal(String local) {
 		this.local = local;
-	}	
+	}
 }
