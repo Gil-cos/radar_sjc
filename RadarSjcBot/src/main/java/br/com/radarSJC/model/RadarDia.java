@@ -7,20 +7,18 @@ public class RadarDia {
 	private String local;
 
 	public RadarDia() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public RadarDia(Dia date, String local) {
 		this.date = date;
 		this.local = local;
 	}
-	
+
 	@Override
 	public String toString() {
-	
 		return "Dia: " + this.date + " Local: " + this.local + "\n";
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
