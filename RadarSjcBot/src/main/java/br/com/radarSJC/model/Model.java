@@ -48,10 +48,17 @@ public class Model implements Subject {
 		RadarDia[] radaresRest = service.getAll();
 
 		for (RadarDia radar : radaresRest) {
+			String[] locals = radar.getLocal().split("-");
 			if ("/semana".equals(update.message().text().toLowerCase()))
-				radarData += "\n" + radar.getDate() + "\n" + radar.getLocal() + "\n";
+				radarData += "\n" + radar.getDate() + "\n" + locals[1] + "\n" + locals[2] + "\n" + locals[3] + "\n"
+						+ locals[4] + "\n";
 		}
 		return radarData;
+	}
+
+	public String formatLocal(RadarDia[] radares) {
+
+		return null;
 	}
 
 	public void searchRadar(Update update) {
@@ -65,24 +72,11 @@ public class Model implements Subject {
 			this.notifyObservers(update.message().chat().id(), "Digite /semana ou /dia:");
 
 		} else {
-
-			radarData = radarRest.getDate() + "\n" + radarRest.getLocal();
+			String[] locals = radarRest.getLocal().split("-");
+			radarData = radarRest.getDate() + "\n" + locals[1] + "\n" + locals[2] + "\n" + locals[3] + "\n" + locals[4]
+					+ "\n";
 			this.notifyObservers(update.message().chat().id(), radarData);
 			this.notifyObservers(update.message().chat().id(), "Digite /semana ou /dia:");
-		}
-	}
-
-	public String getRadares(Update update) {
-		String radarData = "";
-		for (RadarDia radar : radares) {
-			if ("/semana".equals(update.message().text().toLowerCase()))
-				radarData += "\n" + radar.getDate() + "\n" + radar.getLocal() + "\n";
-		}
-
-		if (radarData != "") {
-			return radarData;
-		} else {
-			return "Dia invalido";
 		}
 	}
 }

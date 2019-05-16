@@ -35,6 +35,7 @@ public class RadarDiaService {
 				String json = EntityUtils.toString(entity);
 
 				radares = gson.fromJson(json, RadarDia[].class);
+				
 			}
 			return radares;
 

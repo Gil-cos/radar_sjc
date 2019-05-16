@@ -1,10 +1,13 @@
 package br.gov.sp.fatec.radarsjc.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
+import lombok.Data;
 
 /**
  * @author Alexandre Murata on 20/02/19.
@@ -13,17 +16,15 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "radar_dia")
-@NoArgsConstructor
-@AllArgsConstructor
 public class RadarDia {
+	
+	public RadarDia() {
+	}
 
 	public RadarDia(Long id, Dia date, String local) {
 		this.id = id;
 		this.date = date;
 		this.local = local;
-	}
-	
-	public RadarDia() {
 	}
 
 	@Id

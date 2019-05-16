@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RadarDia } from '../../model/RadarDia';
 
-const API: string = 'http://localhost:8080';
+const API: string = 'https://radarsjc.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'

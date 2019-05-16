@@ -1,6 +1,7 @@
 package br.com.radarSJC;
 
 import br.com.radarSJC.model.Model;
+import br.com.radarSJC.service.RadarDiaService;
 import br.com.radarSJC.view.View;
 
 public class Main {
@@ -14,6 +15,10 @@ public class Main {
 		View view = new View(model);
 		model.registerObserver(view); // connection Model -> View
 		view.receiveUsersMessages();
+		
+		RadarDiaService diaService =  new RadarDiaService();
+		
+		diaService.getAll();
 	}
 
 	public static void initializeModel(Model model) {
