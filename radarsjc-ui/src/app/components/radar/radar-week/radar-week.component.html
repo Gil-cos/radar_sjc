@@ -1,21 +1,31 @@
-<section fxLayout="row wrap" fxLayoutAlign="center center">
-  <mat-card fxFlex="500px" fxFlex.xs="100%">
-    <mat-card-title fxLayoutAlign="center center">Radares da Semana</mat-card-title>
-    <mat-card-content>
-      <table mat-table [dataSource]="dataSource" matSort>
-        <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef> Dia </th>
-          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-        </ng-container>
+<section fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2%">
+  
+  <div class="dia">
+    <app-radar-details [day]="day[0]"></app-radar-details>
+  </div>
 
-        <ng-container matColumnDef="local">
-          <th mat-header-cell *matHeaderCellDef> Endereço </th>
-          <td mat-cell *matCellDef="let element"> {{element.local}} </td>
-        </ng-container>
+  <div class="dia">
+    <app-radar-details [day]="day[1]"></app-radar-details>
+  </div>
+  
+  <div class="dia">
+    <app-radar-details [day]="day[2]"></app-radar-details>
+  </div>
+  
+  <div class="dia">
+    <app-radar-details [day]="day[3]"></app-radar-details>
+  </div>
+  
+  <div class="dia">
+    <app-radar-details [day]="day[4]"></app-radar-details>
+  </div>
+  
+  <div class="dia">
+    <app-radar-details [day]="day[5]"></app-radar-details>
+  </div>
+  
+  <div class="dia">
+    <app-radar-details [day]="day[6]"></app-radar-details>
+  </div>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </mat-card-content>
-  </mat-card>
 </section>

@@ -10,8 +10,8 @@ import { RadarDia } from 'src/app/model/RadarDia';
 })
 export class RadarWeekComponent implements OnInit {
 
-  public displayedColumns = ['date', 'local'];
-  public dataSource = new MatTableDataSource<RadarDia>();
+  day: RadarDia[];
+  locals: string[];
 
   constructor(
     private route: ActivatedRoute
@@ -22,7 +22,9 @@ export class RadarWeekComponent implements OnInit {
   }
 
   getAll() {
-    this.dataSource = this.route.snapshot.data['radarList'];
+    this.day = this.route.snapshot.data['radarList'];
   }
+
+  
 
 }

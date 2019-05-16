@@ -3,13 +3,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RadarWeekComponent } from './radar-week.component';
+import { RadarDetailsComponent } from './radar-details/radar-details.component';
 
 @NgModule({
   declarations: [
-    RadarWeekComponent
+    RadarWeekComponent,
+    RadarDetailsComponent
   ],
   exports: [
-    RadarWeekComponent
+    RadarWeekComponent,
+    RadarDetailsComponent
   ],
   imports: [
     CommonModule,
