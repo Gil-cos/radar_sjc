@@ -20,7 +20,4 @@ public class ControllerSearchRadarDia implements ControllerSearch{
 		view.sendTypingMessage(update);
 		model.searchRadar(update);
 	}
-	
-	
-
 }

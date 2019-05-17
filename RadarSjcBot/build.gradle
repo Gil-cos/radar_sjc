@@ -49,3 +49,6 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
