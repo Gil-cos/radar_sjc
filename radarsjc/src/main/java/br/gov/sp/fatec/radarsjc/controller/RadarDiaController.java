@@ -46,13 +46,15 @@ public class RadarDiaController {
 	}
 	
 	@GetMapping(value="refresh")
-	public void refresh() throws IOException {
+	public String refresh() throws IOException {
 		
 		List<RadarDia> radares = jsoupService.getRadares();
 		
 		for (RadarDia radarDia : radares) {
 			service.createOrUpdate(radarDia);
 		}
+		
+		return "OK";
 	}
 	
 	

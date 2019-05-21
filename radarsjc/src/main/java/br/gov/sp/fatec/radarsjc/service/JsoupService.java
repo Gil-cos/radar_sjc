@@ -23,30 +23,17 @@ public class JsoupService {
 
 		List<RadarDia> radares = new ArrayList<RadarDia>();
 		List<String> spans = new ArrayList<String>();
+		String[] dias = { "segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo" };
 		int i = 0;
 		Long id = 1l;
+		Element spanDefault;
 
-		Element spanSegunda = doc.getElementById(
-				"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_segunda");
-		spans.add(spanSegunda.text());
-		Element spanTerca = doc.getElementById(
-				"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_terca");
-		spans.add(spanTerca.text());
-		Element spanQuarta = doc.getElementById(
-				"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_quarta");
-		spans.add(spanQuarta.text());
-		Element spanQuinta = doc.getElementById(
-				"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_quinta");
-		spans.add(spanQuinta.text());
-		Element spanSexta = doc.getElementById(
-				"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_sexta");
-		spans.add(spanSexta.text());
-		Element spanSabado = doc.getElementById(
-				"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_sabado");
-		spans.add(spanSabado.text());
-		Element spanDomingo = doc.getElementById(
-				"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_domingo");
-		spans.add(spanDomingo.text());
+		for (int j = 0; j < dias.length; j++) {
+			spanDefault = doc.getElementById(
+					"ctl00_ctl00_ctl00_ctl00_ContentPlaceHolderDefault_modelo_master_meio_modelo_uma_coluna_meio_ctl01_Radares_5_Label_"
+							+ dias[j]);
+			spans.add(spanDefault.text());
+		}
 
 		spans = formatLocal(spans);
 
@@ -55,7 +42,7 @@ public class JsoupService {
 			i++;
 			id++;
 		}
-		
+
 		return radares;
 	}
 
@@ -72,7 +59,7 @@ public class JsoupService {
 			nova = nova.replaceAll(ruas[2], ruasPrefix[2]);
 			nova = nova.replaceAll(ruas[3], ruasPrefix[3]);
 			novoSpans.add(nova);
-		} 
+		}
 
 		return novoSpans;
 	}
