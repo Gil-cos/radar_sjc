@@ -61,8 +61,8 @@ public class JsoupService {
 
 	private List<String> formatLocal(List<String> spans) {
 
-		String[] ruas = { "R.", "Av", "E. " };
-		String[] ruasPrefix = { "-R.", "-Av", "-E." };
+		String[] ruas = { "R. ", "Av.", "E. ", "MANUTENÇÃO" };
+		String[] ruasPrefix = { "-R. ", "-Av.", "-E.", "-MANUTENÇÃO" };
 		List<String> novoSpans = new ArrayList<String>();
 		String nova = null;
 
@@ -70,8 +70,9 @@ public class JsoupService {
 			nova = span.replaceAll(ruas[0], ruasPrefix[0]);
 			nova = nova.replaceAll(ruas[1], ruasPrefix[1]);
 			nova = nova.replaceAll(ruas[2], ruasPrefix[2]);
+			nova = nova.replaceAll(ruas[3], ruasPrefix[3]);
 			novoSpans.add(nova);
-		}
+		} 
 
 		return novoSpans;
 	}
