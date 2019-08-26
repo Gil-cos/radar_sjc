@@ -50,9 +50,7 @@ public class RadarDiaController {
 		
 		List<RadarDia> radares = jsoupService.getRadares();
 		
-		for (RadarDia radarDia : radares) {
-			service.createOrUpdate(radarDia);
-		}
+		radares.forEach(r -> service.createOrUpdate(r));
 		
 		return "OK";
 	}

@@ -4,22 +4,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.gov.sp.fatec.radarsjc.factory.ConnectionFactory;
 import br.gov.sp.fatec.radarsjc.model.Dia;
 import br.gov.sp.fatec.radarsjc.model.RadarDia;
 
 @Component
 public class JsoupService {
-
-	private String url = "http://servicos2.sjc.sp.gov.br/servicos/radares.aspx";
-
+	
+	@Autowired
+	private ConnectionFactory connectionFactory;
+	
 	public List<RadarDia> getRadares() throws IOException {
 
-		Document doc = Jsoup.connect(url).get();
+		Document doc = connectionFactory.getConnection();
 
 		List<RadarDia> radares = new ArrayList<RadarDia>();
 		List<String> spans = new ArrayList<String>();
